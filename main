@@ -1,0 +1,152 @@
+package tictactoe
+import java.util.Scanner
+
+
+fun main() {
+   
+    val rangeList = mutableListOf('1', '2', '3')
+    var check = false 
+    val list = mutableListOf(mutableListOf(' ', ' ', ' '),
+                            mutableListOf(' ', ' ', ' '),
+                            mutableListOf(' ', ' ', ' '))
+
+    println("---------")
+            print("| ")
+            for (col in list[0]) { 
+                print("$col ")
+            }
+            println("|")
+            print("| ")
+            for (col in list[1]) { 
+                print("$col ")
+            }
+            println("|")
+            print("| ")
+            for (col in list[2]) { 
+                print("$col ")
+            }
+            println("|")
+            println("---------")
+            
+   for (i in 1..100) {
+       check = false
+       while (check == false) {
+        var inpList2 = readln()
+        var x = inpList2.first()
+        var xInt = x.digitToInt()
+        var y = inpList2.last()
+        var yInt = y.digitToInt()
+        if (x in rangeList && y in rangeList) {
+        if (list[xInt - 1][yInt - 1] == ' ') {
+            if (i % 2 != 0) {
+                list[xInt - 1][yInt - 1] = 'X'
+            } else { list[xInt - 1][yInt - 1] = 'O' }
+            check = true
+            println("---------")
+            print("| ")
+            for (col in list[0]) { 
+                print("$col ")
+            }
+            println("|")
+            print("| ")
+            for (col in list[1]) { 
+                print("$col ")
+            }
+            println("|")
+            print("| ")
+            for (col in list[2]) { 
+                print("$col ")
+            }
+            println("|")
+            println("---------")
+            } else {
+                println("This cell is occupied! Choose another one!")
+            }
+        } else if (x !in 'a'..'z' && y !in 'a'..'z') {
+            println("Coordinates should be from 1 to 3!")
+        } else {
+            println("You should enter numbers!") }      
+    } 
+       val inp0 = list[0][0].toString()
+    val inp1 = list[0][1].toString()
+    val inp2 = list[0][2].toString()
+    val inp3 = list[1][0].toString()
+    val inp4 = list[1][1].toString()
+    val inp5 = list[1][2].toString()
+    val inp6 = list[2][0].toString()
+    val inp7 = list[2][1].toString()
+    val inp8 = list[2][2].toString()
+    
+    val str1 = inp0 + inp1 + inp2
+    val str2 = inp3 + inp4 + inp5
+    val str3 = inp6 + inp7 + inp8
+    val ver1 = inp0 + inp3 + inp6
+    val ver2 = inp1 + inp4 + inp7
+    val ver3 = inp2 + inp5 + inp8
+    val dig1 = inp0 + inp4 + inp8
+    val dig2 = inp2 + inp4 + inp6
+
+    val listX = "XXX"
+    val listO = "OOO"
+
+    val summStr = str1 + str2 + str3
+
+    var countX  = 0.0
+    var countO  = 0.0
+
+    
+    for (e in summStr) {
+        if (e == 'X'){
+            countX++
+        }
+        if (e == 'O') {
+            countO++
+        }}
+    var absCount = Math.abs(countX - countO).toInt()
+        if (absCount in 0..1) {
+            if (str1 == listX || str2 == listX || str3 == listX
+               || ver1 == listX || ver2 == listX || ver3 == listX
+               || dig1 == listX || dig2 == listX) {
+                if (str1 != listO && str2 != listO && str3 != listO
+               && ver1 != listO && ver1 != listO && ver1 != listO
+               && dig1 != listO && dig2 != listO) {
+               println()
+               print ("X wins")
+               break
+               } else {
+            println()
+            print("Impossible")
+        }
+               }
+            if (str1 == listO || str2 == listO || str3 == listO
+               || ver1 == listO || ver2 == listO || ver3 == listO
+               || dig1 == listO || dig2 == listO) {
+                if (str1 != listX && str2 != listX && str3 != listX
+               && ver1 != listX && ver1 != listX && ver1 != listX
+               && dig1 != listX && dig2 != listX) {
+               println()
+               print ("O wins")
+               break
+               } else {
+            println()
+            print("Impossible")
+                }
+        }
+           if (countX + countO == 9.0) {
+               if (str1 != listX && str2 != listX && str3 != listX
+               && ver1 != listX && ver1 != listX && ver1 != listX
+               && dig1 != listX && dig2 != listX
+               && str1 != listO && str2 != listO && str3 != listO
+               && ver1 != listO && ver2 != listO && ver3 != listO
+               && dig1 != listO && dig2 != listO) {
+               println()
+               print("Draw")
+               break
+               }
+           }
+        } else {
+            println()
+            print("Impossible")
+        }
+   }   
+}
